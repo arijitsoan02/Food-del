@@ -41,15 +41,15 @@ const listFood = async (req, res) => {
 // remove food item
 const removeFood = async (req, res) => {
   try {
-    let userData = await userModel.findById(req.body.userId);
-    if (userData && userData.role === "admin") {
+    // let userData = await userModel.findById(req.body.userId);
+    // if (userData && userData.role === "admin") {
       const food = await foodModel.findById(req.body.id);
       fs.unlink(`uploads/${food.image}`, () => {});
       await foodModel.findByIdAndDelete(req.body.id);
       res.json({ success: true, message: "Food Removed" });
-    } else {
-      res.json({ success: false, message: "You are not admin" });
-    }
+    // } else {
+    //   res.json({ success: false, message: "You are not admin" });
+    // }
   } catch (error) {
     console.log(error);
     res.json({ success: false, message: "Error" });
