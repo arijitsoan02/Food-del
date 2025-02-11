@@ -14,13 +14,13 @@ const addFood = async (req, res) => {
     image: image_filename,
   });
   try {
-    let userData = await userModel.findById(req.body.userId);
-    if (userData && userData.role === "admin") {
+    // let userData = await userModel.findById(req.body.userId);
+    // if (userData && userData.role === "admin") {
       await food.save();
       res.json({ success: true, message: "Food Added" });
-    } else {
-      res.json({ success: false, message: "You are not admin" });
-    }
+    // } else {
+      // res.json({ success: false, message: "You are not admin" });
+    // }
   } catch (error) {
     console.log(error);
     res.json({ success: false, message: "Error" });
